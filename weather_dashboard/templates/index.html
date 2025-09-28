@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+        input { padding: 0.5rem; width: 200px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 0.5rem 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #weatherResult { margin-top: 1.5rem; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Dashboard 🌤️</h1>
+        <form id="weatherForm">
+            <input type="text" id="cityInput" placeholder="Enter city name..." required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weatherResult">
+            </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('weatherForm');
+        const cityInput = document.getElementById('cityInput');
+        const weatherResult = document.getElementById('weatherResult');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the form from actually submitting
+            const city = cityInput.value;
+            weatherResult.textContent = 'Loading...';
+
+            try {
+                // This calls OUR OWN FastAPI backend
+                const response = await fetch(`/weather/${city}`);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'City not found');
+                }
+
+                const data = await response.json();
+                
+                weatherResult.innerHTML = `
+                    <h2>${data.city}</h2>
+                    <p><strong>Temperature:</strong> ${data.temperature}</p>
+                    <p><strong>Conditions:</strong> ${data.description}</p>
+                `;
+
+            } catch (error) {
+                weatherResult.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
