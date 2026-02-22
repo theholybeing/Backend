@@ -159,13 +159,6 @@ You can:
 
 ---
 
-## 📸 Screenshots (Optional)
-
-Add screenshots of:
-- Swagger API
-- Frontend UI
-- Database view
-
 ---
 
 ## 👨‍💻 Author
