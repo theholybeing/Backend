@@ -165,28 +165,3 @@ You can:
 
 Muhammad Umer  
 Backend & Full-Stack Developer  
-
----
-
-## ⭐ Support
-
-If you found this project useful:
-
-- Give it a ⭐ on GitHub
-- Connect with me on LinkedIn
-- Share feedback
-
----
-
-## 📢 LinkedIn Post Example
-
-> 🚀 Built a Full-Stack CRUD Application using FastAPI + SQLite  
->
-> 🔹 Designed RESTful APIs with FastAPI  
-> 🔹 Integrated SQLite using SQLAlchemy ORM  
-> 🔹 Connected frontend using JavaScript Fetch API  
-> 🔹 Implemented full CRUD functionality  
->
-> This project strengthened my understanding of backend architecture and API development.
->
-> #FastAPI #Python #BackendDevelopment #FullStack #SQLAlchemy #WebDevelopment
